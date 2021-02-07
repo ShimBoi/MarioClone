@@ -148,7 +148,7 @@ public class Mario extends Sprite {
                 region = marioDead;
                 break;
             case GROWING:
-                region = growMario.getKeyFrame(stateTimer);
+                region = (TextureRegion) growMario.getKeyFrame(stateTimer);
                 if(growMario.isAnimationFinished(stateTimer)) {
                     runGrowAnimation = false;
                 }
@@ -157,7 +157,7 @@ public class Mario extends Sprite {
                 region = marioIsBig ? bigMarioJump : marioJump;
                 break;
             case RUNNING:
-                region = marioIsBig ? bigMarioRun.getKeyFrame(stateTimer, true) : marioRun.getKeyFrame(stateTimer, true);
+                region = (TextureRegion) (marioIsBig ? bigMarioRun.getKeyFrame(stateTimer, true) : marioRun.getKeyFrame(stateTimer, true));
                 break;
             case FALLING:
             case STANDING:
@@ -214,7 +214,7 @@ public class Mario extends Sprite {
             marioIsBig = true;
             timeToDefineBigMario = true;
             setBounds(getX(), getY(), getWidth(), getHeight() * 2);
-            MarioBros.manager.get("audio/sounds/powerup.wav", Sound.class).play();
+            //MarioBros.manager.get("audio/sounds/powerup.wav", Sound.class).play();
         }
     }
 
@@ -222,8 +222,8 @@ public class Mario extends Sprite {
 
         if (!isDead()) {
 
-            MarioBros.manager.get("audio/music/mario_music.ogg", Music.class).stop();
-            MarioBros.manager.get("audio/sounds/mariodie.wav", Sound.class).play();
+            //MarioBros.manager.get("audio/music/mario_music.ogg", Music.class).stop();
+            //MarioBros.manager.get("audio/sounds/mariodie.wav", Sound.class).play();
             marioIsDead = true;
             Filter filter = new Filter();
             filter.maskBits = MarioBros.NOTHING_BIT;
@@ -263,7 +263,7 @@ public class Mario extends Sprite {
                 marioIsBig = false;
                 timeToRedefineMario = true;
                 setBounds(getX(), getY(), getWidth(), getHeight() / 2);
-                MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
+                //MarioBros.manager.get("audio/sounds/powerdown.wav", Sound.class).play();
             } else {
                 die();
             }

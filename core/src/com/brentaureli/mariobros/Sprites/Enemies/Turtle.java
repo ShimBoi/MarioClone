@@ -88,7 +88,7 @@ public class Turtle extends Enemy {
                 break;
             case WALKING:
             default:
-                region = walkAnimation.getKeyFrame(stateTime, true);
+                region = (TextureRegion) walkAnimation.getKeyFrame(stateTime, true);
                 break;
         }
 

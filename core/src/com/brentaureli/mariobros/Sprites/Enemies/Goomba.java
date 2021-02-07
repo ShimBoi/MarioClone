@@ -1,6 +1,7 @@
 package com.brentaureli.mariobros.Sprites.Enemies;
 
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -51,7 +52,7 @@ public class Goomba extends com.brentaureli.mariobros.Sprites.Enemies.Enemy
         else if(!destroyed) {
             b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
-            setRegion(walkAnimation.getKeyFrame(stateTime, true));
+            setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true));
         }
     }
 
@@ -102,7 +103,7 @@ public class Goomba extends com.brentaureli.mariobros.Sprites.Enemies.Enemy
     @Override
     public void hitOnHead(Mario mario) {
         setToDestroy = true;
-        MarioBros.manager.get("audio/sounds/stomp.wav", Sound.class).play();
+        //MarioBros.manager.get("stomp.wav", Sound.class).play();
     }
 
     @Override

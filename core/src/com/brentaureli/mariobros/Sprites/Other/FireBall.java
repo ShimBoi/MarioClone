@@ -1,5 +1,6 @@
 package com.brentaureli.mariobros.Sprites.Other;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -38,7 +39,7 @@ public class FireBall extends Sprite {
             frames.add(new TextureRegion(screen.getAtlas().findRegion("fireball"), i * 8, 0, 8, 8));
         }
         fireAnimation = new Animation(0.2f, frames);
-        setRegion(fireAnimation.getKeyFrame(0));
+        setRegion((Texture) fireAnimation.getKeyFrame(0));
         setBounds(x, y, 6 / MarioBros.PPM, 6 / MarioBros.PPM);
         defineFireBall();
     }
@@ -69,7 +70,7 @@ public class FireBall extends Sprite {
 
     public void update(float dt){
         stateTime += dt;
-        setRegion(fireAnimation.getKeyFrame(stateTime, true));
+        setRegion((Texture) fireAnimation.getKeyFrame(stateTime, true));
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
         if((stateTime > 3 || setToDestroy) && !destroyed) {
             world.destroyBody(b2body);
